@@ -3,7 +3,7 @@ use std::net::TcpListener;
 use std::sync::mpsc;
 use std::thread;
 
-const IP_ADDR: &str = "127.0.0.1:6000";
+const IP_ADDR: &str = "192.168.29.69:6000";
 const MSG_SIZE: usize = 999;
 
 fn sleep() {
@@ -18,7 +18,7 @@ fn main() {
 
     let mut clients = vec![];
     let (tx, rx) = mpsc::channel::<String>();
-
+    println!("listening on {}", IP_ADDR);
     loop {
         if let Ok((mut socket, addr)) = server.accept() {
             println!("client connected at, {}", addr);
